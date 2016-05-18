@@ -226,7 +226,7 @@
     <target name="all" depends="build.modules" description="build all"/>
 
     <property name="number" value="10"/>
-    
+
     <target name="run">
         <java classname="primeTable.PrimeTableSolver">
             <arg value="${number}"/>
