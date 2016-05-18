@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="fun-problems" default="all">
+
+
+    <property file="build.properties"/>
+    <!-- Uncomment the following property if no tests compilation is needed -->
+    <!--
+    <property name="skip.tests" value="true"/>
+     -->
+
+    <!-- Compiler options -->
+
+    <property name="compiler.debug" value="on"/>
+    <property name="compiler.generate.no.warnings" value="off"/>
+    <property name="compiler.args" value=""/>
+    <property name="compiler.max.memory" value="700m"/>
+    <patternset id="ignored.files">
+        <exclude name="**/*.hprof/**"/>
+        <exclude name="**/*.pyc/**"/>
+        <exclude name="**/*.pyo/**"/>
+        <exclude name="**/*.rbc/**"/>
+        <exclude name="**/*.yarb/**"/>
+        <exclude name="**/*~/**"/>
+        <exclude name="**/.DS_Store/**"/>
+        <exclude name="**/.git/**"/>
+        <exclude name="**/.hg/**"/>
+        <exclude name="**/.svn/**"/>
+        <exclude name="**/CVS/**"/>
+        <exclude name="**/RCS/**"/>
+        <exclude name="**/SCCS/**"/>
+        <exclude name="**/__pycache__/**"/>
+        <exclude name="**/_svn/**"/>
+        <exclude name="**/rcs/**"/>
+        <exclude name="**/vssver.scc/**"/>
+        <exclude name="**/vssver2.scc/**"/>
+    </patternset>
+    <patternset id="library.patterns">
+        <include name="*.war"/>
+        <include name="*.swc"/>
+        <include name="*.apk"/>
+        <include name="*.zip"/>
+        <include name="*.ear"/>
+        <include name="*.egg"/>
+        <include name="*.ane"/>
+        <include name="*.jar"/>
+    </patternset>
+    <patternset id="compiler.resources">
+        <exclude name="**/?*.java"/>
+        <exclude name="**/?*.form"/>
+        <exclude name="**/?*.class"/>
+        <exclude name="**/?*.groovy"/>
+        <exclude name="**/?*.scala"/>
+        <exclude name="**/?*.flex"/>
+        <exclude name="**/?*.kt"/>
+        <exclude name="**/?*.clj"/>
+        <exclude name="**/?*.aj"/>
+    </patternset>
+
+    <!-- JDK definitions -->
+
+    <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+    <path id="jdk.classpath.1.8">
+        <fileset dir="${jdk.home.1.8}">
+            <include name="jre/lib/charsets.jar"/>
+            <include name="jre/lib/deploy.jar"/>
+            <include name="jre/lib/ext/cldrdata.jar"/>
+            <include name="jre/lib/ext/dnsns.jar"/>
+            <include name="jre/lib/ext/jaccess.jar"/>
+            <include name="jre/lib/ext/jfxrt.jar"/>
+            <include name="jre/lib/ext/localedata.jar"/>
+            <include name="jre/lib/ext/nashorn.jar"/>
+            <include name="jre/lib/ext/sunec.jar"/>
+            <include name="jre/lib/ext/sunjce_provider.jar"/>
+            <include name="jre/lib/ext/sunpkcs11.jar"/>
+            <include name="jre/lib/ext/zipfs.jar"/>
+            <include name="jre/lib/javaws.jar"/>
+            <include name="jre/lib/jce.jar"/>
+            <include name="jre/lib/jfr.jar"/>
+            <include name="jre/lib/jfxswt.jar"/>
+            <include name="jre/lib/jsse.jar"/>
+            <include name="jre/lib/management-agent.jar"/>
+            <include name="jre/lib/plugin.jar"/>
+            <include name="jre/lib/resources.jar"/>
+            <include name="jre/lib/rt.jar"/>
+            <include name="lib/ant-javafx.jar"/>
+            <include name="lib/dt.jar"/>
+            <include name="lib/javafx-mx.jar"/>
+            <include name="lib/jconsole.jar"/>
+            <include name="lib/packager.jar"/>
+            <include name="lib/sa-jdi.jar"/>
+            <include name="lib/tools.jar"/>
+        </fileset>
+    </path>
+
+    <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+    <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+    <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+
+    <!-- Modules -->
+
+
+    <!-- Module fun-problems -->
+
+    <dirname property="module.fun-problems.basedir" file="${ant.file}"/>
+
+
+    <property name="module.jdk.home.fun-problems" value="${project.jdk.home}"/>
+    <property name="module.jdk.bin.fun-problems" value="${project.jdk.bin}"/>
+    <property name="module.jdk.classpath.fun-problems" value="${project.jdk.classpath}"/>
+
+    <property name="compiler.args.fun-problems" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+
+    <property name="fun-problems.output.dir" value="${module.fun-problems.basedir}/out/production/fun-problems"/>
+    <property name="fun-problems.testoutput.dir" value="${module.fun-problems.basedir}/out/test/fun-problems"/>
+
+    <path id="fun-problems.module.bootclasspath">
+        <!-- Paths to be included in compilation bootclasspath -->
+    </path>
+
+    <path id="fun-problems.module.production.classpath">
+        <path refid="${module.jdk.classpath.fun-problems}"/>
+    </path>
+
+    <path id="fun-problems.runtime.production.module.classpath">
+        <pathelement location="${fun-problems.output.dir}"/>
+    </path>
+
+    <path id="fun-problems.module.classpath">
+        <path refid="${module.jdk.classpath.fun-problems}"/>
+        <pathelement location="${fun-problems.output.dir}"/>
+        <pathelement location="${basedir}/src/lib/hamcrest-core-1.3.jar"/>
+        <pathelement location="${basedir}/src/lib/junit-4.12.jar"/>
+    </path>
+
+    <path id="fun-problems.runtime.module.classpath">
+        <pathelement location="${fun-problems.testoutput.dir}"/>
+        <pathelement location="${fun-problems.output.dir}"/>
+        <pathelement location="${basedir}/src/lib/hamcrest-core-1.3.jar"/>
+        <pathelement location="${basedir}/src/lib/junit-4.12.jar"/>
+    </path>
+
+
+    <patternset id="excluded.from.module.fun-problems">
+        <patternset refid="ignored.files"/>
+    </patternset>
+
+    <patternset id="excluded.from.compilation.fun-problems">
+        <patternset refid="excluded.from.module.fun-problems"/>
+    </patternset>
+
+    <path id="fun-problems.module.sourcepath">
+        <dirset dir="${module.fun-problems.basedir}">
+            <include name="src/lib"/>
+            <include name="src/main"/>
+        </dirset>
+    </path>
+
+    <path id="fun-problems.module.test.sourcepath">
+        <dirset dir="${module.fun-problems.basedir}">
+            <include name="src/test"/>
+        </dirset>
+    </path>
+
+
+    <target name="compile.module.fun-problems"
+            depends="compile.module.fun-problems.production,compile.module.fun-problems.tests"
+            description="Compile module fun-problems"/>
+
+    <target name="compile.module.fun-problems.production" description="Compile module fun-problems; production classes">
+        <mkdir dir="${fun-problems.output.dir}"/>
+        <javac destdir="${fun-problems.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}"
+               memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.fun-problems}/javac">
+            <compilerarg line="${compiler.args.fun-problems}"/>
+            <bootclasspath refid="fun-problems.module.bootclasspath"/>
+            <classpath refid="fun-problems.module.production.classpath"/>
+            <src refid="fun-problems.module.sourcepath"/>
+            <patternset refid="excluded.from.compilation.fun-problems"/>
+        </javac>
+
+        <copy todir="${fun-problems.output.dir}">
+            <fileset dir="${module.fun-problems.basedir}/src/lib">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+            <fileset dir="${module.fun-problems.basedir}/src/main">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="compile.module.fun-problems.tests" depends="compile.module.fun-problems.production"
+            description="compile module fun-problems; test classes" unless="skip.tests">
+        <mkdir dir="${fun-problems.testoutput.dir}"/>
+        <javac destdir="${fun-problems.testoutput.dir}" debug="${compiler.debug}"
+               nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true"
+               executable="${module.jdk.bin.fun-problems}/javac">
+            <compilerarg line="${compiler.args.fun-problems}"/>
+            <bootclasspath refid="fun-problems.module.bootclasspath"/>
+            <classpath refid="fun-problems.module.classpath"/>
+            <src refid="fun-problems.module.test.sourcepath"/>
+            <patternset refid="excluded.from.compilation.fun-problems"/>
+        </javac>
+
+        <copy todir="${fun-problems.testoutput.dir}">
+            <fileset dir="${module.fun-problems.basedir}/src/test">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="clean.module.fun-problems" description="cleanup module">
+        <delete dir="${fun-problems.output.dir}"/>
+        <delete dir="${fun-problems.testoutput.dir}"/>
+    </target>
+
+    <target name="init" description="Build initialization">
+        <!-- Perform any build initialization in this target -->
+    </target>
+
+    <target name="clean" depends="clean.module.fun-problems" description="cleanup all"/>
+
+    <target name="build.modules" depends="init, clean, compile.module.fun-problems" description="build all modules"/>
+
+    <target name="all" depends="build.modules" description="build all"/>
+
+    <property name="number" value="10"/>
+    
+    <target name="run">
+        <java classname="primeTable.PrimeTableSolver">
+            <arg value="${number}"/>
+            <classpath>
+                <pathelement path="${fun-problems.output.dir}"/>
+            </classpath>
+        </java>
+    </target>
+
+
+</project>
