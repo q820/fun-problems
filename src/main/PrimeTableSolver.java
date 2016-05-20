@@ -1,5 +1,3 @@
-package primeTable;
-
 import java.io.PrintStream;
 import java.util.Arrays;
 

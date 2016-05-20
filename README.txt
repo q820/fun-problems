@@ -5,12 +5,15 @@ Solution:
 2. Multiply all said N numbers between themselves (O(N^2/2))
 Total time complexity: O(N^2) which is the theoretical lower bound since we need to print N^2 elements.
 
+Knows quirks:
+1. Printing could be nicer
+
 Setting up:
-Make sure the jdk in build.proprieties points to the correct location on your machine.
+1. Have $JAVA_HOME set (min jdk1.7)
+2. Have ant installed
 
 Running:
-Run: "ant" to build and compile all.
-
-Run: "ant run" to run the program with 10 as default value
-
-Run: "ant run -Dnumber=X" to run the program with N's value set to X 
+- "ant" to build and compile all.
+- "ant test" to run the unit tests
+- "ant run" to run the program with 10 as default value
+- "ant run -Dnumber=X" to run the program with N's value set to X 
